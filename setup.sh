@@ -4,8 +4,8 @@
 echo '------------------------------------------'
 echo 'Copy resource group name for the sandbox'
 AccountId=$(az account list --query '[0].id'  --output tsv)
-RgName=$(`az group list --query '[0].name'  --output tsv`)
-Location=$(`az group list --query '[0].location'  --output tsv`)
+RgName=$(az group list --query '[0].name'  --output tsv)
+Location=$(az group list --query '[0].location'  --output tsv)
 # Location=`az group list --query '[0].location' --output tsv`
 GaLocation=eastus2
 
