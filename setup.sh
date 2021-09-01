@@ -19,11 +19,12 @@ echo $RgName
 az storage account create \
     --name $StorageAcctName \
     --resource-group $RgName \
-    --sku Standard_LRS
+    --location $Location \
+    --sku 'Standard_LRS'
 
-StorageConnStr =`az storage account show-connection-string -g $RgName  -n $StorageAcctName '[0].connectionString' --output tsv`
+StorageConnStr=$(az storage account show-connection-string -g $RgName  -n $StorageAcctName '[0].connectionString' --output tsv)
 
-StorageContainerName = "learncontainerstorage" 
+StorageContainerName=learncontainerstorage 
 
 # Create a Storage Container in the Storage Account
 echo '------------------------------------------'
