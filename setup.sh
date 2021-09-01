@@ -7,9 +7,9 @@ AccountId=`az account list --query '[0].id'  --output tsv`
 RgName=`az group list --query '[0].name'  --output tsv`
 Location=`az group list --query '[0].location'  --output tsv`
 # Location=`az group list --query '[0].location' --output tsv`
-GaLocation=`eastus2'  --output tsv`
+GaLocation=`eastus2' 
 
-StorageAcctName=`mylearnstorageacct' --output tsv`
+StorageAcctName=`mylearnstorageacct' 
 
 # Create a Storage Account for the Blob
 echo '------------------------------------------'
@@ -20,7 +20,7 @@ az storage account create \
 
 StorageConnStr =`az storage account show-connection-string -g $RgName  -n $StorageAcctName '[0].connectionString' --output tsv`
 
-StorageContainerName = 'learncontainerstorage' --output tsv`
+StorageContainerName = 'learncontainerstorage' 
 
 # Create a Storage Container in the Storage Account
 echo '------------------------------------------'
@@ -29,7 +29,7 @@ az storage container create \
     --account-name $StorageAcctName \
     --name $StorageContainerName
 
-AzIoTHubName=`MyLearnIoTHub' --output tsv`
+AzIoTHubName=`MyLearnIoTHub' 
 
 # Create an IoT Hub instance
 echo '------------------------------------------'
@@ -46,7 +46,7 @@ az extension add
 
 az config set extension.use_dynamic_install=yes_without_prompt
 
-DeviceName=`MyPowerSensor'  --output tsv`
+DeviceName=`MyPowerSensor'
 
 # Register a device to IoT Hub
 echo '------------------------------------------'
@@ -75,7 +75,7 @@ az iot hub routing-endpoint create \
 echo '------------------------------------------'
 echo 'Creating an Anomaly Detector instance'
 
-AdName=`LearnAnomalyDetector'  --output tsv`
+AdName=`LearnAnomalyDetector'
 
 az cognitiveservices account create \ 
     --kind "AnomalyDetector" \
