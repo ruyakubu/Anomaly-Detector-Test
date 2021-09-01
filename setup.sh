@@ -15,9 +15,11 @@ StorageAcctName=mylearnstorageacct
 echo '------------------------------------------'
 echo 'Creating a Storage Account for the Blob'
 echo $StorageAcctName
+echo $RgName
 az storage account create \
     --name $StorageAcctName \
-    --resource-group $RgName
+    --resource-group $RgName \
+    --sku Standard_LRS
 
 StorageConnStr =`az storage account show-connection-string -g $RgName  -n $StorageAcctName '[0].connectionString' --output tsv`
 
