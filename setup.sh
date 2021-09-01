@@ -16,8 +16,10 @@ echo '------------------------------------------'
 echo 'Creating a Storage Account for the Blob'
 echo $StorageAcctName
 echo $RgName
+
 az storage account create -n $StorageAcctName -g $RgName 
 
+echo 'Storage acount created'
 
 StorageConnStr=$(az storage account show-connection-string -g $RgName  -n $StorageAcctName '[0].connectionString' --output tsv)
 
