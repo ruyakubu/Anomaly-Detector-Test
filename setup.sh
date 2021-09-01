@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Get Sandbox resource group name
 echo '------------------------------------------'
 echo 'Copy resource group name for the sandbox'
@@ -8,10 +7,9 @@ AccountId=`az account list --query '[0].id'  --output tsv`
 RgName=`az group list --query '[0].name'  --output tsv`
 Location=`az group list --query '[0].location'  --output tsv`
 # Location=`az group list --query '[0].location' --output tsv`
-GaLocation = 'eastus2'  --output tsv`
+GaLocation=`eastus2'  --output tsv`
 
-
-StorageAcctName = 'mylearnstorageacct' --output tsv`
+StorageAcctName=`mylearnstorageacct' --output tsv`
 
 # Create a Storage Account for the Blob
 echo '------------------------------------------'
@@ -19,7 +17,6 @@ echo 'Creating a Storage Account for the Blob'
 az storage account create \
     --resource-group $RgName \ 
     --name $StorageAcctName 
-
 
 StorageConnStr =`az storage account show-connection-string -g $RgName  -n $StorageAcctName '[0].connectionString' --output tsv`
 
@@ -32,9 +29,7 @@ az storage container create \
     --account-name $StorageAcctName \
     --name $StorageContainerName
 
-
-AzIoTHubName = 'MyLearnIoTHub' --output tsv`
-
+AzIoTHubName=`MyLearnIoTHub' --output tsv`
 
 # Create an IoT Hub instance
 echo '------------------------------------------'
@@ -42,7 +37,6 @@ echo 'Creating a IoT Hub instance'
 az iot hub create \
     --resource-group $RgName \
     --name $AzIoTHubName
-
 
 # Create an Azure IoT CLI Extension
 echo '------------------------------------------'
@@ -52,7 +46,7 @@ az extension add
 
 az config set extension.use_dynamic_install=yes_without_prompt
 
-DeviceName = 'MyPowerSensor'  --output tsv`
+DeviceName=`MyPowerSensor'  --output tsv`
 
 # Register a device to IoT Hub
 echo '------------------------------------------'
@@ -61,10 +55,7 @@ az iot hub device-identity create \
     --device-id $DeviceName \  
     --hub-name $AzIoTHubName
 
-
-
 IoTConnStr =`az iot hub connection-string show '[0].connectionString'  --output tsv`
-
 
 # Create a destination to Route IoT messages
 echo '------------------------------------------'
@@ -84,7 +75,7 @@ az iot hub routing-endpoint create \
 echo '------------------------------------------'
 echo 'Creating an Anomaly Detector instance'
 
-AdName = 'LearnAnomalyDetector'  --output tsv`
+AdName=`LearnAnomalyDetector'  --output tsv`
 
 az cognitiveservices account create \ 
     --kind "AnomalyDetector" \
@@ -94,16 +85,8 @@ az cognitiveservices account create \
     --skuS0 \ 
     --subscription $AccountId
 
-
 APIKey =`az cognitiveservices account keys list –name $AdName --resource-group $RgName '[0].key'  --output tsv`
 
 echo '--------------------------------------------------------'
 echo '             Resource Setup Completed'
 echo '--------------------------------------------------------'
-
-
-
-
-
-
-
