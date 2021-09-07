@@ -16,7 +16,7 @@ echo '------------------------------------------'
 echo 'Creating a Storage Account for the Blob'
 echo $StorageAcctName
 echo $RgName
-az storage account create -n $StorageAcctName --resource-group="${RgName}"
+az storage account create -n $StorageAcctName --resource-group=$RgName
 
 echo 'Storage acount created'
 
