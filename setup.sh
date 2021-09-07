@@ -89,7 +89,7 @@ echo 'IoT routing storage created'
 echo '------------------------------------------'
 echo 'Creating an Anomaly Detector instance'
 
-AdName = "LearnAnomalyDetector"
+AdName=learnAnomalyDetector
 
 az cognitiveservices account create \ 
     --kind "AnomalyDetector" \
