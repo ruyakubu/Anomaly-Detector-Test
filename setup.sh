@@ -24,6 +24,10 @@ StorageConnStr=$(az storage account show-connection-string -g $RgName  -n $Stora
 
 StorageContainerName=learncontainerstorage 
 
+
+echo $StorageConnStr
+echo $StorageContainerName
+
 # Create a Storage Container in the Storage Account
 echo '------------------------------------------'
 echo 'Creating a Storage Container in the Storage Account'
