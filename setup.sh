@@ -63,7 +63,7 @@ echo '------------------------------------------'
 echo 'Register a device to IoT Hub'
 az iot hub device-identity create \ 
     --device-id $DeviceName \  
-    --hub-name $AzIoTHubName
+    --name $AzIoTHubName
     
 echo 'IoT Device created' 
 
