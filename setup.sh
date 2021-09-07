@@ -20,7 +20,7 @@ az storage account create -n $StorageAcctName --resource-group="$RgName"
 
 echo 'Storage acount created'
 
-StorageConnStr=$(az storage account show-connection-string -g $RgName  -n $StorageAcctName '[0].connectionString' --output tsv)
+StorageConnStr=$(az storage account show-connection-string -g $RgName  -n $StorageAcctName --query '[0].connectionString' --output tsv)
 
 StorageContainerName=learncontainerstorage 
 
