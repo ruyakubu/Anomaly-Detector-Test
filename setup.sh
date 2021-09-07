@@ -34,15 +34,19 @@ echo 'Creating a Storage Container in the Storage Account'
 az storage container create \
     --account-name $StorageAcctName \
     --name $StorageContainerName
+    
+echo 'Storage container created'    
 
-AzIoTHubName = "MyLearnIoTHub" 
+AzIoTHubName=myLearnIoTHub
 
 # Create an IoT Hub instance
 echo '------------------------------------------'
 echo 'Creating a IoT Hub instance'
 az iot hub create \
-    --resource-group $RgName \
-    --name $AzIoTHubName
+    --name $AzIoTHubName \
+    --resource-group $RgName 
+      
+echo 'IoT Hub created'    
 
 # Create an Azure IoT CLI Extension
 echo '------------------------------------------'
@@ -52,7 +56,7 @@ az extension add
 
 az config set extension.use_dynamic_install=yes_without_prompt
 
-DeviceName = "MyPowerSensor"
+DeviceName=myPowerSensor
 
 # Register a device to IoT Hub
 echo '------------------------------------------'
@@ -60,8 +64,10 @@ echo 'Register a device to IoT Hub'
 az iot hub device-identity create \ 
     --device-id $DeviceName \  
     --hub-name $AzIoTHubName
+    
+echo 'IoT Device created' 
 
-IoTConnStr =`az iot hub connection-string show '[0].connectionString'  --output tsv`
+IoTConnStr =`az iot hub connection-string show --query '[0].connectionString'  --output tsv`
 
 # Create a destination to Route IoT messages
 echo '------------------------------------------'
@@ -76,6 +82,8 @@ az iot hub routing-endpoint create \
     --container $StorageContainerName \ 
     --resource-group $RgName \
     --encoding "json"
+
+echo 'IoT routing storage created' 
 
 # Create an Anomaly Detector instance
 echo '------------------------------------------'
