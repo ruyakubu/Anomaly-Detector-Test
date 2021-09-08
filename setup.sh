@@ -71,14 +71,14 @@ IoTConnStr=$(az iot hub connection-string show --query '[0].connectionString'  -
 
 
 echo $AccountId
+echo $IoTConnStr
 
 # Create a destination to Route IoT messages
 echo '------------------------------------------'
 echo 'Creating a destination to Route IoT messages'
 az iot hub routing-endpoint create --name S1 --hub-name $AzIoTHubName --endpoint-resource-group $RgName -s $AccountId --endpoint-type azurestoragecontainer --connection-string $StorageConnStr --container $StorageContainerName  
-
-
 echo 'IoT routing storage created' 
+
 
 # Create an Anomaly Detector instance
 echo '------------------------------------------'
