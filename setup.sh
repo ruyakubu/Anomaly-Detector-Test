@@ -91,7 +91,7 @@ az cognitiveservices account create \
     --name $AdName \ 
     --resource-group $RgName \
     --location $GaLocation \ 
-    --skuS0 \ 
+    --sku S0 \ 
     --subscription $AccountId
 
 APIKey=$(az cognitiveservices account keys list –name $AdName --resource-group $RgName '[0].key'  --output tsv)
