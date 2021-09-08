@@ -51,8 +51,7 @@ echo 'IoT Hub created'
 # Create an Azure IoT CLI Extension
 echo '------------------------------------------'
 echo 'Create an Azure IoT CLI Extension'
-az extension add \  
-    --name azure-iot
+az extension add --name azure-iot
 
 az config set extension.use_dynamic_install=yes_without_prompt
 
