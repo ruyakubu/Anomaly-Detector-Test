@@ -69,16 +69,19 @@ echo 'IoT Device created'
 
 IoTConnStr =`az iot hub connection-string show --query '[0].connectionString'  --output tsv`
 
+
+echo $AccountId
+
 # Create a destination to Route IoT messages
 echo '------------------------------------------'
 echo 'Creating a destination to Route IoT messages'
 az iot hub routing-endpoint create \
+    --hub-name $AzIoTHubName \ 
+    --endpoint-subscription-id $AccountId \ 
+    --endpoint-type 'azurestoragecontainer' \
     --endpoint-resource-group $RgName \
     --connection-string $StorageConnStr \
     --endpoint-name 'S1' \ 
-    --endpoint-subscription-id $AccountId \ 
-    --endpoint-type 'azurestoragecontainer' \
-    --hub-name $AzIoTHubName \ 
     --container $StorageContainerName \ 
     --resource-group $RgName \
     --encoding "json"
