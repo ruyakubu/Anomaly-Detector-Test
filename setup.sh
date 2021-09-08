@@ -73,10 +73,21 @@ IoTConnStr=$(az iot hub connection-string show --query '[0].connectionString'  -
 echo $AccountId
 echo $IoTConnStr
 
-# Create a destination to Route IoT messages
+# Create a destination to Route endpoint IoT messages
 echo '------------------------------------------'
 echo 'Creating a destination to Route IoT messages'
 az iot hub routing-endpoint create --endpoint-name=S1 --hub-name $AzIoTHubName --endpoint-resource-group $RgName --endpoint-subscription-id $AccountId --endpoint-type azurestoragecontainer --connection-string $StorageConnStr --container $StorageContainerName --encoding=avro
+echo 'IoT routing endpointstorage created' 
+
+condition='level="storage"'
+endpointName="StorageEndpoint"
+endpointType="azurestoragecontainer"
+routeName="StorageRoute"
+
+# Create a destination to Route IoT messages
+echo '------------------------------------------'
+echo 'Creating a destination to Route IoT messages'
+az iot hub route create --name $routeName --hub-name $AzIoTHubName --source devicemessages --resource-group $RgName --endpoint-name=S1 --enabled --condition $condition
 echo 'IoT routing storage created' 
 
 
