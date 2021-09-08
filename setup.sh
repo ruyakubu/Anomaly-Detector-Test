@@ -67,7 +67,7 @@ az iot hub device-identity create --device-id $DeviceName --hub-name $AzIoTHubNa
     
 echo 'IoT Device created' 
 
-IoTConnStr =`az iot hub connection-string show --query '[0].connectionString'  --output tsv`
+IoTConnStr=$(az iot hub connection-string show --query '[0].connectionString'  --output tsv)
 
 
 echo $AccountId
@@ -102,7 +102,7 @@ az cognitiveservices account create \
     --skuS0 \ 
     --subscription $AccountId
 
-APIKey =`az cognitiveservices account keys list –name $AdName --resource-group $RgName '[0].key'  --output tsv`
+APIKey=$(az cognitiveservices account keys list –name $AdName --resource-group $RgName '[0].key'  --output tsv)
 
 echo '--------------------------------------------------------'
 echo '             Resource Setup Completed'
