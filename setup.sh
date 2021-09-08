@@ -76,11 +76,11 @@ echo $AccountId
 echo '------------------------------------------'
 echo 'Creating a destination to Route IoT messages'
 az iot hub routing-endpoint create \
-    --endpoint-name S1 \ 
+    --name S1 \ 
     --hub-name $AzIoTHubName \ 
-    --endpoint-resource-group $RgName \
-    --endpoint-subscription-id $AccountId \ 
-    --endpoint-type azurestoragecontainer \
+    -r $RgName \
+    -s $AccountId \ 
+    --type azurestoragecontainer \
     --connection-string $StorageConnStr \
     --container $StorageContainerName  
 
