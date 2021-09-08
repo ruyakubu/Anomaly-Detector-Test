@@ -58,6 +58,9 @@ az config set extension.use_dynamic_install=yes_without_prompt
 
 DeviceName=myPowerSensor
 
+echo $DeviceName
+echo $AzIoTHubName
+
 # Register a device to IoT Hub
 echo '------------------------------------------'
 echo 'Register a device to IoT Hub'
