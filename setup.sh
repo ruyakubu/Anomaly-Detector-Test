@@ -85,6 +85,13 @@ echo 'Creating an Anomaly Detector instance...'
 az cognitiveservices account create --kind AnomalyDetector --name $AdName --resource-group $RgName --location $GaLocation --sku S0 --subscription $AccountId
 echo 'Anomaly Detector instance created' 
 
+# Get Anomaly Detector instance name
+echo '------------------------------------------'
+echo 'Copy ANOMALY_DETECTOR_NAME'
+echo '------------------------------------------'
+echo $AdName
+echo '------------------------------------------'
+
 APIKey=$(az cognitiveservices account keys list --name $AdName --resource-group $RgName --query key1  --output tsv)
 
 # Get API Key for Anomaly Detector
