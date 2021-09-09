@@ -99,7 +99,7 @@ AdName=learnAnomalyDetector
 
 az cognitiveservices account create --kind AnomalyDetector --name $AdName --resource-group $RgName --location $GaLocation --sku S0 --subscription $AccountId
 
-APIKey=$(az cognitiveservices account keys list --name $AdName --resource-group $RgName --query '[0].key'  --output tsv)
+APIKey=$(az cognitiveservices account keys list --name $AdName --resource-group $RgName --query key1  --output tsv)
 
 echo $APIKey
 
