@@ -60,11 +60,13 @@ echo 'IoT Device created'
 IoTConnStr=$(az iot hub connection-string show --query '[0].connectionString'  --output tsv)
 
 # Get IoT Hub Device connection string
+echo ' ::: '
 echo '------------------------------------------'
 echo 'Copy IOTHUB_DEVICE_CONNECTION_STRING'
 echo '------------------------------------------'
 echo $IoTConnStr
 echo '------------------------------------------'
+echo ' ::: '
 
 # Create a destination to Route endpoint IoT messages
 echo '------------------------------------------'
@@ -86,21 +88,23 @@ az cognitiveservices account create --kind AnomalyDetector --name $AdName --reso
 echo 'Anomaly Detector instance created' 
 
 # Get Anomaly Detector instance name
+echo ' ::: '
 echo '------------------------------------------'
 echo 'Copy ANOMALY_DETECTOR_NAME'
 echo '------------------------------------------'
 echo $AdName
 echo '------------------------------------------'
+echo ' ::: '
 
 APIKey=$(az cognitiveservices account keys list --name $AdName --resource-group $RgName --query key1  --output tsv)
 
 # Get API Key for Anomaly Detector
+echo ' ::: '
 echo '------------------------------------------'
 echo 'Copy API_KEY_ANOMALY_DETECTOR'
 echo '------------------------------------------'
 echo $APIKey
 echo '------------------------------------------'
-
 echo ' ::: '
 
 echo '--------------------------------------------------------'
