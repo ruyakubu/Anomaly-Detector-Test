@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo '--------------------------------------------------------'
+echo '             Resource Setup Started'
+echo '--------------------------------------------------------'
+
 # Set enviroment variables
 AccountId=$(az account list --query '[0].id'  --output tsv)
 RgName=$(az group list --query '[0].name'  --output tsv)
