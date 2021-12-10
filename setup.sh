@@ -11,7 +11,8 @@ Location=$(az group list --query '[0].location'  --output tsv)
 
 GaLocation=eastus2
 StorageAcctName=mylearnstorageacct
-StorageContainerName=learncontainerstorage 
+StorageContainerName=learninputcontainer
+OuputStorageContainerName=learnoutputcontainer
 AzIoTHubName=myLearnIoTHub
 DeviceName=myPowerSensor
 condition='level="storage"'
@@ -28,12 +29,20 @@ echo 'Storage acount created'
 
 StorageConnStr=$(az storage account show-connection-string -g $RgName  -n $StorageAcctName --query connectionString --output tsv)
 
-# Create a Storage Container in the Storage Account
+# Create a Storage Container for raw data in the Storage Account
 echo '------------------------------------------'
 echo 'Creating a Storage Container in the Storage Account...'
 az storage container create \
     --account-name $StorageAcctName \
     --name $StorageContainerName
+echo 'Storage container created'   
+
+# Create a Storage Container for raw data in the Storage Account
+echo '------------------------------------------'
+echo 'Creating a Storage Container in the Storage Account...'
+az storage container create \
+    --account-name $StorageAcctName \
+    --name $OuputStorageContainerName
 echo 'Storage container created'    
 
 # Create an IoT Hub instance
