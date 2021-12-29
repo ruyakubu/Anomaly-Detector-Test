@@ -13,6 +13,7 @@ GaLocation=eastus2
 StorageAcctName=mylearnstorageacct
 StorageContainerName=learninputcontainer
 OuputStorageContainerName=learnoutputcontainer
+MultiADStorageContainerName=mvadlearninputcontainer
 AzIoTHubName=myLearnIoTHub
 DeviceName=myPowerSensor
 condition='level="storage"'
@@ -29,21 +30,29 @@ echo 'Storage acount created'
 
 StorageConnStr=$(az storage account show-connection-string -g $RgName  -n $StorageAcctName --query connectionString --output tsv)
 
-# Create a Storage Container for raw data in the Storage Account
+# Create a Storage Container for for data in the Storage Account
 echo '------------------------------------------'
-echo 'Creating a Storage Container in the Storage Account...'
+echo 'Creating a Storage Container in the Storage Account for univariant AD raw data...'
 az storage container create \
     --account-name $StorageAcctName \
     --name $StorageContainerName
 echo 'Storage container created'   
 
-# Create a Storage Container for raw data in the Storage Account
+# Create a Storage Container for processed data in the Storage Account
 echo '------------------------------------------'
-echo 'Creating a Storage Container in the Storage Account...'
+echo 'Creating a Storage Container in the Storage Account for univariant AD processed data...'
 az storage container create \
     --account-name $StorageAcctName \
     --name $OuputStorageContainerName
-echo 'Storage container created'    
+echo 'Storage container created'   
+
+# Create a Storage Container for multi-variant data in the Storage Account
+echo '------------------------------------------'
+echo 'Creating a Storage Container in the Storage Account for multi-variant AD input data...'
+az storage container create \
+    --account-name $StorageAcctName \
+    --name $MultiADStorageContainerName
+echo 'Storage container created'   
 
 # Create an IoT Hub instance
 echo '------------------------------------------'
