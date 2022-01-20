@@ -78,7 +78,7 @@ echo 'Registering a device in IoT Hub...'
 az iot hub device-identity create --device-id $DeviceName --hub-name $AzIoTHubName   
 echo 'IoT Device created' 
 
-IoTConnStr=$(az iot hub connection-string show --query '[0].connectionString'  --output tsv)
+IoTConnStr=$(az iot hub device-identity connection-string show  --device-id $DeviceName --hub-name $AzIoTHubName --resource-group $RgName --query 'connectionString' -o tsv)
 
 
 # Create a destination to Route endpoint IoT messages
